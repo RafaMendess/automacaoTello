@@ -18,13 +18,12 @@ def detectarMaos(video):
     
     
             if hand["type"]=="Right":
-                print(landmarks)
                 dedos=[8,12,16,20] 
                 contador= 0
+                fingers= detector.fingersUp(hand)
                 
                 if landmarks: 
-                    if landmarks[4][0]<landmarks[3][0] and landmarks[20][1]<landmarks[18][1]:
-                        print("funcionou")
+                    if landmarks[4][0]<landmarks[3][0]:
                         contador+=1
                             
                     for x in dedos:
@@ -42,6 +41,6 @@ def detectarMaos(video):
         
     video.release()
     cv2.destroyAllWindows()
-        
+detectarMaos(cv2.VideoCapture(0))  
     
     
